@@ -6,7 +6,7 @@
  * Time: 15:20
  */
 
-abstract class View
+class BaseView
 {
     protected $templateView = "main_view.php"; // здесь можно указать общий вид по умолчанию.
 

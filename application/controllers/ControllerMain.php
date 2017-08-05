@@ -6,10 +6,10 @@
  * Time: 15:49
  */
 
-class Controller_Main extends Controller
+class ControllerMain extends BaseController
 {
     function actionIndex()
     {
-        $this->view->generate('main_view.php', 'template_view.php');
+        $this->view->render('main_view.php', 'template_view.php');
     }
 }

@@ -6,14 +6,14 @@
  * Time: 15:20
  */
 
-class Controller {
+class BaseController {
 
-    public $model;
-    public $view;
+    protected $model;
+    protected $view;
 
     function __construct()
     {
-        $this->view = new View();
+        $this->view = new BaseView();
     }
 
     function actionIndex()
