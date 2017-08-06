@@ -5,6 +5,11 @@
  * Date: 01.08.17
  * Time: 15:10
  */
+namespace application\core;
+
+
+
+use application\controllers\ControllerMain;
 
 class Route
 {
@@ -44,11 +49,10 @@ class Route
         }
 
         // подцепляем файл с классом контроллера
-        $controllerFile = $controllerName.'.php';
-        $controllerPath = "../application/controllers/".$controllerFile;
+        $controllerPath = '../application/controllers/'.$controllerName.'.php';
         if(file_exists($controllerPath))
         {
-            include __DIR__."/../controllers/".$controllerFile;
+            require $controllerPath;
         }
         else
         {
@@ -60,7 +64,8 @@ class Route
         }
 
         // создаем контроллер
-        $controller = new $controllerName;
+        var_dump('ControllerMain' == $controllerName);
+        $controller = new $controllerName();
         $action = $actionName;
 
         if(method_exists($controller, $action))
@@ -75,6 +80,7 @@ class Route
         }
 
     }
+
 
     function ErrorPage404()
     {

@@ -5,6 +5,9 @@
  * Date: 01.08.17
  * Time: 15:49
  */
+namespace application\controllers;
+
+use \application\core\BaseController;
 
 class ControllerMain extends BaseController
 {
