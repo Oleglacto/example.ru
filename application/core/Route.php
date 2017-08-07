@@ -15,7 +15,7 @@ class Route
 {
     // контроллер и действие по умолчанию
     private static $modelName = 'model';
-    private static $controllerName = 'Main';
+    private static $controllerName = 'Site';
     private static $actionName = 'index';
 
 

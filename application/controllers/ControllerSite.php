@@ -9,10 +9,10 @@ namespace application\controllers;
 
 use \application\core\BaseController;
 
-class ControllerMain extends BaseController
+class ControllerSite extends BaseController
 {
     function actionIndex()
     {
-        $this->view->render('main_view.php', 'template_view.php');
+        $this->view->render('site_view.php', 'template_view.php');
     }
 }

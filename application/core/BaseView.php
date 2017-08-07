@@ -8,7 +8,7 @@
 namespace application\core;
 class BaseView
 {
-    protected $templateView = "main_view.php"; // здесь можно указать общий вид по умолчанию.
+    protected $templateView = "site_view.php"; // здесь можно указать общий вид по умолчанию.
 
 
     function render($contentView, $templateView, $data = null)
