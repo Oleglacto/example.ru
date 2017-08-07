@@ -11,4 +11,5 @@ class BaseModel
     public function getData()
     {
     }
+
 }

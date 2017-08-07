@@ -5,11 +5,13 @@
  * Date: 05.08.17
  * Time: 10:58
  */
-namespace application\core;
+namespace application\dbal;
+
 
 use PDO;
 
-class DataBase{
+class DataBaseCon{
+
 
 
     /**
@@ -36,9 +38,9 @@ class DataBase{
 
     public function getDB(){
         if(is_null(static::$pdo)){
-            $database = require '../../config/database.php';
+            $database = require_once '../application/config/database.php';
             static::$pdo = new PDO('mysql:host='.$database['host'].';dbname='.
-            $database['database'].';charset=utf8;' ,$database['user'],$database['password']);
+                $database['database'].';charset=utf8;' ,$database['user'],$database['password']);
         }
         return static::$pdo;
     }

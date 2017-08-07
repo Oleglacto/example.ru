@@ -43,8 +43,8 @@ class Route
         Route::setFullName(Route::$controllerName,Route::$actionName);
 
         // подцепляем файл с классом модели (файла модели может и не быть)
-        $modelFile = strtolower(Route::$modelName).'.php';
-        $modelPath = "/application/models/".$modelFile;
+        $modelFile = Route::$modelName.'.php';
+        $modelPath = "../application/models/".$modelFile;
 
         if(file_exists($modelPath))
         {
@@ -80,7 +80,7 @@ class Route
     }
 
     private function setFullName($controller,$action = null){
-        Route::$modelName = 'Model_'.$controller;
+        Route::$modelName = $controller;
         Route::$controllerName = 'Controller'.$controller;
         Route::$actionName = 'action'.$action;
     }

@@ -8,11 +8,17 @@
 namespace application\controllers;
 
 use \application\core\BaseController;
+use application\models\Site;
 
 class ControllerSite extends BaseController
 {
     function actionIndex()
     {
-        $this->view->render('site_view.php', 'template_view.php');
+        $this->model = new Site();
+        $categoriesName = $this->model->getCategories();
+        $cakesName = $this->model->getCakes();
+        $data['categories'] = $categoriesName;
+        $data['cakes'] = $cakesName;
+        $this->view->render('site_view.php', 'template_view.php',$data);
     }
 }

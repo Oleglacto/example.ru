@@ -1,30 +1,88 @@
 <header class="main-header">
+    <div class="main-header__container container">
+        <h1 class="visually-hidden">YetiCave</h1>
+        <a class="main-header__logo">
+            <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
+        </a>
+        <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru">
+            <input type="search" name="search" placeholder="Поиск торта">
+            <input class="main-header__search-btn" type="submit" name="find" value="Найти">
+        </form>
+        <a class="main-header__add-lot button" href="add-lot.html">Добавить торт</a>
 
+        <nav class="user-menu">
+            <div class="user-menu__image">
+                <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
+            </div>
+            <div class="user-menu__logged">
+                <p>Константин</p>
+                <a href="#">Выйти</a>
+            </div>
+        </nav>
+    </div>
 </header>
 <main class="container">
-
+    <section class="promo">
+        <h2 class="promo__title">Нужен торт для праздника?</h2>
+        <p class="promo__text">В нашем интернет-магазине ты найдёшь самые свежие и вкусные торты.</p>
+        <ul class="promo__list">
+            <li class="promo__item promo__item--boards">
+                <a class="promo__link" href="all-lots/lots">Фруктовые</a>
+            </li>
+            <li class="promo__item promo__item--attachment">
+                <a class="promo__link" href="all-lots.html">Сметанные</a>
+            </li>
+            <li class="promo__item promo__item--boots">
+                <a class="promo__link" href="all-lots.html">Шоколадные</a>
+            </li>
+            <li class="promo__item promo__item--clothing">
+                <a class="promo__link" href="all-lots.html">С орехами</a>
+            </li>
+            <li class="promo__item promo__item--tools">
+                <a class="promo__link" href="all-lots.html">Со сгущеннкой</a>
+            </li>
+            <li class="promo__item promo__item--other">
+                <a class="promo__link" href="all-lots.html">С сыром</a>
+            </li>
+        </ul>
+    </section>
+    <section class="lots">
+        <div class="lots__header">
+            <h2>Все торты</h2>
+            <select class="lots__select">
+                <?php foreach ($data['categories'] as $item): ?>
+                    <option><?=$item ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <ul class="lots__list">
+            <li class="lots__item lot">
+                <div class="lot__image">
+                    <img src="img/lot-1.jpg" width="350" height="260" alt="Сноуборд">
+                </div>
+                <div class="lot__info">
+                    <span class="lot__category"><?=$data['categories'][0] ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$data['cakes'][0]['name'] ?></a></h3>
+                    <div class="lot__state">
+                        <div class="lot__rate">
+                            <span class="lot__amount">Стартовая цена</span>
+                            <span class="lot__cost"><?=$data['cakes'][0]['price'] ?><b class="rub">р</b></span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </section>
 </main>
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
+            <?php foreach ($data['categories'] as $item): ?>
             <li class="nav__item">
-                <a href="all-lots.html">Фруктовые</a>
+                <a href="all-lots.html"><?=$item ?></a>
             </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Сметанные</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Шоколадные</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">С орехами</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Со сгущенкой</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">С сыром</a>
-            </li>
+            <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
