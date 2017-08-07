@@ -9,64 +9,63 @@ namespace application\core;
 
 
 
-use application\controllers\ControllerMain;
+
 
 class Route
 {
-    static function start()
+    // контроллер и действие по умолчанию
+    private static $modelName = 'model';
+    private static $controllerName = 'Main';
+    private static $actionName = 'index';
+
+
+    public static function start()
     {
-        // контроллер и действие по умолчанию
-        $controllerName = 'Main';
-        $actionName = 'index';
+
+
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         // получаем имя контроллера
         if ( !empty($routes[1]) )
         {
-            $controllerName = ucfirst($routes[1]);
+            Route::$controllerName = ucfirst($routes[1]);
 
         }
 
         // получаем имя экшена
         if ( !empty($routes[2]) )
         {
-            $actionName = $routes[2];
+            Route::$actionName = $routes[2];
         }
 
         // добавляем префиксы
-        $modelName = 'Model_'.$controllerName;
-        $controllerName = 'Controller'.$controllerName;
-        $actionName = 'action'.$actionName;
+        Route::setFullName(Route::$controllerName,Route::$actionName);
 
         // подцепляем файл с классом модели (файла модели может и не быть)
-
-        $modelFile = strtolower($modelName).'.php';
+        $modelFile = strtolower(Route::$modelName).'.php';
         $modelPath = "/application/models/".$modelFile;
+
         if(file_exists($modelPath))
         {
-            include "/application/models/".$modelFile;
+            require $modelPath;
         }
 
         // подцепляем файл с классом контроллера
-        $controllerPath = '../application/controllers/'.$controllerName.'.php';
+        $controllerPath = '../application/controllers/'.Route::$controllerName.'.php';
         if(file_exists($controllerPath))
         {
             require $controllerPath;
         }
         else
         {
-            /*
-            правильно было бы кинуть здесь исключение,
-            но для упрощения сразу сделаем редирект на страницу 404
-            */
             Route::ErrorPage404();
         }
 
         // создаем контроллер
-        var_dump('ControllerMain' == $controllerName);
-        $controller = new $controllerName();
-        $action = $actionName;
+        $controllerName = '\\application\\controllers\\'.Route::$controllerName;
+        $controller = new $controllerName;
+        $action = Route::$actionName;
 
         if(method_exists($controller, $action))
         {
@@ -75,14 +74,19 @@ class Route
         }
         else
         {
-            // здесь также разумнее было бы кинуть исключение
             Route::ErrorPage404();
         }
 
     }
 
+    private function setFullName($controller,$action = null){
+        Route::$modelName = 'Model_'.$controller;
+        Route::$controllerName = 'Controller'.$controller;
+        Route::$actionName = 'action'.$action;
+    }
 
-    function ErrorPage404()
+
+    private function ErrorPage404()
     {
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('HTTP/1.1 404 Not Found');
