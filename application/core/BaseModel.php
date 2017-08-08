@@ -8,6 +8,10 @@
 namespace application\core;
 class BaseModel
 {
+    public function __construct()
+    {
+    }
+
     public function getData()
     {
     }

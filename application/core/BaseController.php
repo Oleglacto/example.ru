@@ -9,7 +9,6 @@ namespace application\core;
 
 class BaseController {
 
-    protected $model;
     protected $view;
 
     function __construct()

@@ -50,8 +50,8 @@
         <div class="lots__header">
             <h2>Все торты</h2>
             <select class="lots__select">
-                <?php foreach ($data['categories'] as $item): ?>
-                    <option><?=$item ?></option>
+                <?php foreach ($categories as $item): ?>
+                    <option><?=$item['name'] ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -61,8 +61,8 @@
                     <img src="img/lot-1.jpg" width="350" height="260" alt="Сноуборд">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$data['categories'][0] ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$data['cakes'][0]['name'] ?></a></h3>
+                    <span class="lot__category"><?=$categories[0] ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$cakes[0]['name'] ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
@@ -78,9 +78,9 @@
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <?php foreach ($data['categories'] as $item): ?>
+            <?php foreach ($categories as $item): ?>
             <li class="nav__item">
-                <a href="all-lots.html"><?=$item ?></a>
+                <a href="all-lots.html"><?=$item['name'] ?></a>
             </li>
             <?php endforeach; ?>
         </ul>

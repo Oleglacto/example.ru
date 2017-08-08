@@ -9,10 +9,13 @@ namespace application\core;
 class BaseView
 {
     protected $templateView = "template_view.php"; // здесь можно указать общий вид по умолчанию.
-    protected $categories;
-    protected $cakes;
+
     function render($contentView, $templateView, $data = null)
     {
+        if(is_array($data))
+        {
+            extract($data);
+        }
         include __DIR__.'/../views/'.$templateView;
     }
 }

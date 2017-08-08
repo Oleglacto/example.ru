@@ -7,18 +7,13 @@
  */
 namespace application\controllers;
 
-use \application\core\BaseController;
-use application\models\Site;
+use application\core\BaseController;
 
 class ControllerSite extends BaseController
 {
     function actionIndex()
     {
-        $this->model = new Site();
-        $categoriesName = $this->model->getCategories();
-        $cakesName = $this->model->getCakes();
-        $data['categories'] = $categoriesName;
-        $data['cakes'] = $cakesName;
-        $this->view->render('site_view.php', 'template_view.php',$data);
+        //echo __METHOD__;
+        $this->view->render('site_view.php', 'template_view.php');
     }
 }
