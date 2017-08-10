@@ -14,30 +14,12 @@ class Database
 {
 
     /**
-     * @var
-     * ссылка на экзмепляр этого класса
-     */
-    protected static $instance;
-
-    /**
      * ссылка на подключение к БД
      * @var PDO
      */
     protected $pdo;
 
-
-
-
-    public static function getInstance()
-    {
-        if(is_null(static::$instance))
-        {
-            static::$instance = new static;
-        }
-        return static::$instance;
-    }
-
-
+    protected $error;
 
 
     public function __construct()
@@ -46,20 +28,23 @@ class Database
     }
 
 
-    /**
-     * @param $query
-     * @return result of query
-     */
-    public function getDataFromDB($query)
+    public function getPreparedData($data)
     {
-        return $this->prepareStatement($query);
+        $columns = [];
+        $values = [];
+        $anchors = [];
+        foreach ($data as $key => $value)
+        {
+            $columns[] = $key;
+            $values[] = $value;
+            $anchors[] = ":".$key;
+        }
+        return [
+            'columns' => $columns,
+            'anchors' => $anchors,
+            'values' => $values
+        ];
     }
-
-    public function makeSelect($query,$data)
-    {
-        return $this->prepareStatement($query, $data);
-    }
-
 
     /**
      * Соединение с базой данных
@@ -76,39 +61,92 @@ class Database
         return $this->pdo;
     }
 
-    public function insertData()
+    public function getError()
     {
-
-    }
-    public function deleteById($id)
-    {
-        $sql = "";
+        return $this->error;
     }
     /**
      * @param $sql запрос
      * @param $data полученные данные
      * @return result
+     * @internal param null $anchors
      */
-    private function prepareStatement($sql, $data = null)
+    public function executeQuery($sql, $data = null)
     {
         if(!$data)
         {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $this->ifNotData($sql);
         }
         else
         {
-            $stmt = $this->pdo->prepare($sql);
-            if(!is_array($data))
+            $anchors = $this->getAnchors($sql);
+            if(!$statement = $this->pdo->prepare($sql))
             {
-                $stmt->execute(array($data));
+                $this->error = $statement->errorInfo();
+            }
+            if(is_array($data) and is_array($anchors)) {
+                foreach ($data as $key => $value)
+                {
+                    if(is_int($value))
+                    {
+                        $statement->bindValue($anchors[$key],$value,PDO::PARAM_INT);
+                    }
+                    else
+                    {
+                        $statement->bindValue($anchors[$key],$value,PDO::PARAM_STR);
+                    }
+                }
+                if($statement->execute())
+                {
+                    $result = $this->getResult($statement);
+                }
+                else
+                {
+                    $this->error = $statement->errorInfo();
+                }
+
             }
             else
             {
-                $stmt->execute($data);
+                echo "data or anchors not array";
             }
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+        return $result;
+
+    }
+
+    protected function ifNotData($sql)
+    {
+        $statement = $this->pdo->prepare($sql);
+        if($statement->execute())
+        {
+            $result = $this->getResult($statement);
+        }
+        else
+        {
+            $this->error = $statement->errorInfo();
+        }
+        return $result;
+    }
+
+    protected function getResult($statement)
+    {
+        if(!is_array($result = $statement->fetchAll()))
+        {
+            $result = $statement;
+        }
+
+        return $result;
+    }
+
+
+    protected function getAnchors($sql)
+    {
+        preg_match_all("<:[a-z]+_[a-z]+|:[a-z]+>",$sql,$array);
+        foreach($array[0] as $value)
+        {
+            $result[] = $value;
         }
         return $result;
     }

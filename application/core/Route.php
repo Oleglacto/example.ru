@@ -27,23 +27,23 @@ class Route
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         // получаем имя контроллера
-        if ( !empty($routes[1]) )
+        if (!empty($routes[1]))
         {
-            Route::$controllerName = ucfirst($routes[1]);
+            self::$controllerName = ucfirst($routes[1]);
 
         }
 
         // получаем имя экшена
         if ( !empty($routes[2]) )
         {
-            Route::$actionName = $routes[2];
+            self::$actionName = $routes[2];
         }
 
         // добавляем префиксы
-        Route::setFullName(Route::$controllerName,Route::$actionName);
+        self::setPrefix(self::$controllerName,self::$actionName);
 
         // подцепляем файл с классом модели (файла модели может и не быть)
-        $modelFile = Route::$modelName.'.php';
+        $modelFile = self::$modelName.'.php';
         $modelPath = "../application/models/".$modelFile;
 
         if(file_exists($modelPath))
@@ -52,20 +52,20 @@ class Route
         }
 
         // подцепляем файл с классом контроллера
-        $controllerPath = '../application/controllers/'.Route::$controllerName.'.php';
+        $controllerPath = '../application/controllers/'.self::$controllerName.'.php';
         if(file_exists($controllerPath))
         {
             require $controllerPath;
         }
         else
         {
-            Route::ErrorPage404();
+            self::ErrorPage404();
         }
 
         // создаем контроллер
-        $controllerName = '\\application\\controllers\\'.Route::$controllerName;
+        $controllerName = '\\application\\controllers\\'.self::$controllerName;
         $controller = new $controllerName;
-        $action = Route::$actionName;
+        $action = self::$actionName;
 
         if(method_exists($controller, $action))
         {
@@ -74,15 +74,15 @@ class Route
         }
         else
         {
-            Route::ErrorPage404();
+            self::ErrorPage404();
         }
 
     }
 
-    private function setFullName($controller,$action = null){
-        Route::$modelName = $controller;
-        Route::$controllerName = 'Controller'.$controller;
-        Route::$actionName = 'action'.$action;
+    private function setPrefix($controller, $action = null){
+        self::$modelName = $controller;
+        self::$controllerName = 'Controller'.$controller;
+        self::$actionName = 'action'.$action;
     }
 
 

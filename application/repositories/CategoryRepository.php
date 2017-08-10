@@ -11,11 +11,12 @@ namespace application\repositories;
 
 class CategoryRepository extends BaseRepository{
 
+    protected $table = 'categories';
 
     public function getCategories()
     {
-        $query = "SELECT * FROM `categories`";
-        $data = $this->connection->getDataFromDB($query);
+        $query = "SELECT * FROM $this->table";
+        $data = $this->connection->executeQuery($query);
         return $data;
     }
 
