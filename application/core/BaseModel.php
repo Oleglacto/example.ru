@@ -39,8 +39,11 @@ class BaseModel
      * @return mixed
      * @throws Exception
      */
-    public function getTable(){
-        if(is_null($this->table)) throw new Exception('Задайте имя таблицы');
+    public function getTable()
+    {
+        if(is_null($this->table)){
+            throw new Exception('Задайте имя таблицы');
+        }
         return $this->table;
     }
 

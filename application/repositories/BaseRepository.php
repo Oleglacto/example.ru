@@ -29,17 +29,12 @@ abstract class BaseRepository{
     public function deleteById($id)
     {
         $sql = "DELETE FROM $this->table WHERE id = :id";
-        if(!$this->connection->executeQuery($sql,[':id'],$id))
-        {
-            echo "Ошибка при удалении в $this->table";
-        }
+        $this->runQuery($sql);
     }
 
     protected function runQuery($sql,$values = null)
     {
-            if(!$this->connection->executeQuery($sql,$values))
-            {
-                echo '<pre>';
+            if(!$this->connection->executeQuery($sql,$values)) {
                var_dump($this->connection->getError());
             }
     }

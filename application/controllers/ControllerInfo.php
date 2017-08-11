@@ -14,6 +14,8 @@ Class ControllerInfo extends BaseController{
         $this->view->render('info_view.php','template_view.php');
         echo "action_index";
     }
+
+
     function actionFirst()
     {
         $this->view->render('info_view.php','template_view.php');

@@ -16,8 +16,8 @@ class ControllerSite extends BaseController
     {
         $rep = new repositories\CakeRepository();
 
-        echo '<pre>';
-        var_dump($rep->getCakes());
+        //echo '<pre>';
+        //var_dump($rep->getCakes());
         //echo __METHOD__;
         $this->view->render('site_view.php', 'template_view.php');
     }

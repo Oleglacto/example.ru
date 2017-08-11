@@ -22,20 +22,16 @@ class Route
     public static function start()
     {
 
-
-
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         // получаем имя контроллера
-        if (!empty($routes[1]))
-        {
+        if (!empty($routes[1])) {
             self::$controllerName = ucfirst($routes[1]);
 
         }
 
         // получаем имя экшена
-        if ( !empty($routes[2]) )
-        {
+        if ( !empty($routes[2]) ) {
             self::$actionName = $routes[2];
         }
 
@@ -46,19 +42,15 @@ class Route
         $modelFile = self::$modelName.'.php';
         $modelPath = "../application/models/".$modelFile;
 
-        if(file_exists($modelPath))
-        {
+        if(file_exists($modelPath)) {
             require $modelPath;
         }
 
         // подцепляем файл с классом контроллера
         $controllerPath = '../application/controllers/'.self::$controllerName.'.php';
-        if(file_exists($controllerPath))
-        {
+        if(file_exists($controllerPath)) {
             require $controllerPath;
-        }
-        else
-        {
+        } else {
             self::ErrorPage404();
         }
 
@@ -67,19 +59,17 @@ class Route
         $controller = new $controllerName;
         $action = self::$actionName;
 
-        if(method_exists($controller, $action))
-        {
+        if(method_exists($controller, $action)) {
             // вызываем действие контроллера
             $controller->$action();
-        }
-        else
-        {
+        } else {
             self::ErrorPage404();
         }
 
     }
 
-    private function setPrefix($controller, $action = null){
+    private function setPrefix($controller, $action = null)
+    {
         self::$modelName = $controller;
         self::$controllerName = 'Controller'.$controller;
         self::$actionName = 'action'.$action;

@@ -12,8 +12,7 @@ class BaseView
 
     function render($contentView, $templateView, $data = null)
     {
-        if(is_array($data))
-        {
+        if(is_array($data)) {
             extract($data);
         }
         include __DIR__.'/../views/'.$templateView;
