@@ -16,9 +16,17 @@ class ControllerSite extends BaseController
     {
         $rep = new repositories\CakeRepository();
 
-        //echo '<pre>';
-        //var_dump($rep->getCakes());
-        //echo __METHOD__;
+        //$result = $rep->getAllCakes();
+//        $rep->addCake(
+//            ['name' => 'Рай',
+//            'mass'=> '234',
+//            'price' => '800',
+//            'category_id' => 1]);
+       // var_dump($result);
+        echo '<pre>';
+        var_dump($rep->getCakes([
+            'category_id' => 1
+        ]));
         $this->view->render('site_view.php', 'template_view.php');
     }
 }

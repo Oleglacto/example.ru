@@ -41,7 +41,7 @@ class BaseModel
      */
     public function getTable()
     {
-        if(is_null($this->table)){
+        if (is_null($this->table)) {
             throw new Exception('Задайте имя таблицы');
         }
         return $this->table;

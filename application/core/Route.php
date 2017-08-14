@@ -31,7 +31,7 @@ class Route
         }
 
         // получаем имя экшена
-        if ( !empty($routes[2]) ) {
+        if (!empty($routes[2])) {
             self::$actionName = $routes[2];
         }
 
@@ -42,13 +42,13 @@ class Route
         $modelFile = self::$modelName.'.php';
         $modelPath = "../application/models/".$modelFile;
 
-        if(file_exists($modelPath)) {
+        if (file_exists($modelPath)) {
             require $modelPath;
         }
 
         // подцепляем файл с классом контроллера
         $controllerPath = '../application/controllers/'.self::$controllerName.'.php';
-        if(file_exists($controllerPath)) {
+        if (file_exists($controllerPath)) {
             require $controllerPath;
         } else {
             self::ErrorPage404();
@@ -59,7 +59,7 @@ class Route
         $controller = new $controllerName;
         $action = self::$actionName;
 
-        if(method_exists($controller, $action)) {
+        if (method_exists($controller, $action)) {
             // вызываем действие контроллера
             $controller->$action();
         } else {

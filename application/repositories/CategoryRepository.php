@@ -13,21 +13,4 @@ class CategoryRepository extends BaseRepository{
 
     protected $table = 'categories';
 
-    public function getCategories()
-    {
-        $query = "SELECT * FROM $this->table";
-        $data = $this->connection->executeQuery($query);
-        return $data;
-    }
-
-    public function addCategory($name)
-    {
-
-    }
-
-    public function deleteCategory($name)
-    {
-
-    }
-
 }
