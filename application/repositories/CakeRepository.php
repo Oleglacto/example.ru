@@ -11,37 +11,7 @@ class CakeRepository extends BaseRepository {
 
     protected $table = 'cakes';
 
-    /**
-     * Добавление торта в базу данных
-     * @param $data
-     */
-    public function addCake($data)
-    {
-        $dataToExecute = $this->connection->getPreparedData($data);
-        $anchors = implode(',',$dataToExecute['anchors']);
-        $columns = implode(',',$dataToExecute['columns']);
-        $sql = "INSERT INTO $this->table (". $columns . ") VALUES (" . $anchors . ')';
-        $this->runQuery($sql, [$dataToExecute['values'], $dataToExecute['anchors']]);
-    }
 
-
-    /**
-     * @param $id изменяемого
-     * @param $data [что изменить]
-     */
-    public function editCake($id, $data)
-    {
-        $columnAndAnchor = [];
-        $dataToExecute = $this->connection->getPreparedData($data);
-        foreach ($dataToExecute['columns'] as $key => $value) {
-            $columnAndAnchor[] = $value . ' = ' . $dataToExecute['anchors'][$key];
-        }
-        $dataToExecute['anchors'][] = ":id";
-        $dataToExecute['values'][] = $id;
-        $columnAndAnchor = implode(',',$columnAndAnchor);
-        $sql = "UPDATE $this->table SET " . $columnAndAnchor . " WHERE id = :id";
-        $this->runQuery($sql,[$dataToExecute['values'], $dataToExecute['anchors']]);
-    }
 
     /**
      * Возвращает массив с заданными параметрами

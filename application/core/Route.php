@@ -21,7 +21,6 @@ class Route
 
     public static function start()
     {
-
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         // получаем имя контроллера
@@ -51,7 +50,7 @@ class Route
         if (file_exists($controllerPath)) {
             require $controllerPath;
         } else {
-            self::ErrorPage404();
+            //self::ErrorPage404();
         }
 
         // создаем контроллер
@@ -63,7 +62,7 @@ class Route
             // вызываем действие контроллера
             $controller->$action();
         } else {
-            self::ErrorPage404();
+            //self::ErrorPage404();
         }
 
     }

@@ -28,8 +28,31 @@ abstract class BaseRepository{
 
     /**
      * Возвращает все торты из бд
+     * @param $data
      * @return array|bool
      */
+    public function edit($id, $data)
+    {
+        $columnAndAnchor = [];
+        $dataToExecute = $this->connection->getPreparedData($data);
+        foreach ($dataToExecute['columns'] as $key => $value) {
+            $columnAndAnchor[] = $value . ' = ' . $dataToExecute['anchors'][$key];
+        }
+        $dataToExecute['anchors'][] = ":id";
+        $dataToExecute['values'][] = $id;
+        $columnAndAnchor = implode(',',$columnAndAnchor);
+        $sql = "UPDATE $this->table SET " . $columnAndAnchor . " WHERE id = :id";
+        $this->runQuery($sql,[$dataToExecute['values'], $dataToExecute['anchors']]);
+    }
+
+    public function add($data)
+    {
+        $dataToExecute = $this->connection->getPreparedData($data);
+        $anchors = implode(',',$dataToExecute['anchors']);
+        $columns = implode(',',$dataToExecute['columns']);
+        $sql = "INSERT INTO $this->table (". $columns . ") VALUES (" . $anchors . ')';
+        $this->runQuery($sql, [$dataToExecute['values'], $dataToExecute['anchors']]);
+    }
 
     public function getAllRows()
     {
