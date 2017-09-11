@@ -14,6 +14,10 @@ class Database
 {
 
     /**
+     * ФОРМАТИРОВАНИЕ КОДА АААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
+     */
+
+    /**
      * ссылка на подключение к БД
      * @var PDO
      */
@@ -29,10 +33,12 @@ class Database
 
 
     /**
-     * @param $data массив с входными данными
+     * @param $data массив с входными данными   - ЕПТ, укажи ШТОРМУ что это массив. Смари ниже как:
+     * @param $data array    - Да и тип в функции укажи
      * @return array [columns,values,anchors]
      */
-    public function getPreparedData($data)
+//    public function getPreparedData($data)
+    public function getPreparedData(array $data)
     {
         $columns = [];
         $values = [];
@@ -58,6 +64,10 @@ class Database
             $database = require_once '../application/config/database.php';
             $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.
                 $database['database'].';charset=utf8;' ,$database['user'],$database['password']);
+
+            /**
+             * А если не получилось подключиться?
+             */
         }
         return $this->pdo;
     }
@@ -94,6 +104,9 @@ class Database
                     $this->error = $statement->errorInfo();
                 }
             } else {
+                /**
+                 * Эхать-то не надо ничего, едрить колотить)
+                 */
                 echo "data or anchors not array";
             }
         }

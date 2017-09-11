@@ -8,6 +8,11 @@
 namespace application\core;
 class BaseView
 {
+
+    /**
+     * Классное оформление кода. Приятные отступы (нет)
+     * п.с. общий вид, ну скажи по номральному - шаблон :)
+     */
     protected $templateView = "template_view.php"; // здесь можно указать общий вид по умолчанию.
 
     function render($contentView, $templateView, $data = null)
@@ -15,6 +20,10 @@ class BaseView
         if(is_array($data)) {
             extract($data);
         }
+
+        /**
+         * А почему не реквайр?
+         */
         include __DIR__.'/../views/'.$templateView;
     }
 }

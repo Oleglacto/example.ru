@@ -6,6 +6,11 @@
  * Time: 19:32
  */
 
+/**
+ * Про неймспес не забыл? Шторм же даже подсвечивает
+ */
+
+
 Class ControllerInfo extends BaseController{
 
 

@@ -7,3 +7,6 @@
  */
 namespace application\models;
 
+/**
+ * Какая насыщенная модель!
+ */

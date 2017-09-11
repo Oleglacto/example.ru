@@ -9,6 +9,10 @@ namespace application\core;
 
 class BaseController {
 
+    /**
+     * ХДЕ ПХПДОК КОММЕНТАРИИ??!!!!
+     */
+
     protected $view;
 
     function __construct()

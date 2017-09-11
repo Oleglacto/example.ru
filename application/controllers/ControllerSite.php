@@ -14,6 +14,10 @@ class ControllerSite extends BaseController
 {
     function actionIndex()
     {
+        /**
+         * Не надо так, use каталог, и потмо классы с частю неймспейса задавать
+         * use отдельно каждый класс, поверь моему жизненному опыту)
+         */
         $rep = new repositories\CakeRepository();
 
         //echo '<pre>';
