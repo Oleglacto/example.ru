@@ -7,3 +7,23 @@
  */
 namespace application\models;
 
+use application\core\BaseModel;
+
+class Cake extends BaseModel
+{
+    public function add()
+    {
+
+    }
+
+    public function delete()
+    {
+
+    }
+
+    public function edit()
+    {
+
+    }
+
+}

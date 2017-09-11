@@ -11,25 +11,26 @@ class CakeRepository extends BaseRepository {
 
     protected $table = 'cakes';
 
-    public function getCakes()
+
+
+    /**
+     * Возвращает массив с заданными параметрами
+     * @param array $parameters (example 'where $parameters')
+     * @param string|null $columns (example 'id,name')
+     * @return array|bool
+     */
+    public function getCakes($parameters, $columns = null)
     {
-        $query = "SELECT * FROM $this->table";
-        $data = $this->connection->executeQuery($query);
-        return $data;
-    }
-
-    public function addCake($data)
-    {
-        $dataToExecute = $this->connection->getPreparedData($data);
-        $anchors = implode(',',$dataToExecute['anchors']);
-        $columns = implode(',',$dataToExecute['columns']);
-        $sql = "INSERT INTO $this->table (". $columns . ") VALUES (" . $anchors . ')';
-        $this->runQuery($sql,$dataToExecute['values']);
-    }
-
-
-    public function editCake()
-    {
-
+        $dataToExecute = $this->connection->getPreparedData($parameters);
+        foreach ($dataToExecute['columns'] as $key => $value) {
+            $columnAndAnchor[] = $value . ' = ' . $dataToExecute['anchors'][$key];
+        }
+        $columnAndAnchor = implode(' and ',$columnAndAnchor);
+        if ($columns) {
+            $sql = "SELECT $columns FROM $this->table WHERE $columnAndAnchor";
+        } else {
+            $sql = "SELECT * FROM $this->table WHERE $columnAndAnchor";
+        }
+        return $this->connection->makeSelect($sql,[$dataToExecute['values'],$dataToExecute['anchors']]);
     }
 }
