@@ -7,6 +7,23 @@
  */
 namespace application\models;
 
-/**
- * Какая насыщенная модель!
- */
+use application\core\BaseModel;
+
+class Cake extends BaseModel
+{
+    public function add()
+    {
+
+    }
+
+    public function delete()
+    {
+
+    }
+
+    public function edit()
+    {
+
+    }
+
+}

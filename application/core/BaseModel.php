@@ -13,40 +13,14 @@ use Exception;
 
 class BaseModel
 {
-
     /**
-     * Классное оформление кода. Приятные отступы (нет)
+     * @var $repository экземпляр класса репозитория
      */
+    protected $repository;
 
-
-    /**
-     * таблица в бд
-     * @var $table
-     */
-    protected $table;
-
-
-    /**
-     * уникальный идентификатор
-     * @var $id
-     */
-    protected $id;
-
-    /**
-     * список полей, которые
-     * были обновлены
-     * @var array $fields;
-     */
-    protected $fields = [];
-
-    /**
-     * Получить имя таблицы бд
-     * @return mixed
-     * @throws Exception
-     */
     public function getTable()
     {
-        if(is_null($this->table)){
+        if (is_null($this->table)) {
             throw new Exception('Задайте имя таблицы');
         }
         return $this->table;

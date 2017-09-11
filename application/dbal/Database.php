@@ -12,7 +12,6 @@ use PDO;
 
 class Database
 {
-
     /**
      * ФОРМАТИРОВАНИЕ КОДА АААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
      */
@@ -23,14 +22,16 @@ class Database
      */
     protected $pdo;
 
+    /**
+     * Хранит последнюю ошибку PDO
+     * @var $error
+     */
     protected $error;
-
 
     public function __construct()
     {
         $this->pdo = $this->getDB();
     }
-
 
     /**
      * @param $data массив с входными данными   - ЕПТ, укажи ШТОРМУ что это массив. Смари ниже как:
@@ -60,7 +61,7 @@ class Database
      * @return PDO
      */
     public function getDB(){
-        if(is_null($this->pdo)) {
+        if (is_null($this->pdo)) {
             $database = require_once '../application/config/database.php';
             $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.
                 $database['database'].';charset=utf8;' ,$database['user'],$database['password']);
@@ -72,72 +73,92 @@ class Database
         return $this->pdo;
     }
 
+    /**
+     * возвращат послднюю ошибку PDO
+     * @return $error
+     */
     public function getError()
     {
         return $this->error;
     }
+
     /**
+     * Выполнение sql запроса
      * @param $sql подготовленный sql запрос
-     * @param $data [values,anchors]
-     * @return result
+     * @param $data [values[0],anchors[1]]
+     * @return true|false
      */
     public function executeQuery($sql, $data = null)
     {
-        if(!$data) {
-            $result = $this->ifNotData($sql);
-        } else {
-            $anchors = $this->getAnchors($sql);
-            if(!$statement = $this->pdo->prepare($sql)) {
+        $statement = null;
+        if (!$data) {
+            if (!$statement = $this->pdo->prepare($sql)) {
                 $this->error = $statement->errorInfo();
             }
-            if(is_array($data) and is_array($anchors)) {
-                foreach ($data as $key => $value) {
-                    if(is_numeric($value)) {
-                        $statement->bindValue($anchors[$key],$value,PDO::PARAM_INT);
-                    } else {
-                        $statement->bindValue($anchors[$key],$value,PDO::PARAM_STR);
-                    }
-                }
-                if($statement->execute()) {
-                    $result = $this->getResult($statement);
-                } else {
-                    $this->error = $statement->errorInfo();
-                }
+        } else {
+            if ($statement = $this->pdo->prepare($sql)) {
+                $statement = $this->bindParams($statement, $data);
             } else {
-                /**
-                 * Эхать-то не надо ничего, едрить колотить)
-                 */
-                echo "data or anchors not array";
+                $this->error = $statement->errorInfo();
             }
         }
-        return $result;
-    }
-
-    protected function ifNotData($sql)
-    {
-        $statement = $this->pdo->prepare($sql);
-        if($statement->execute()) {
-            $result = $this->getResult($statement);
+        if ($result = $statement->execute()) {
+            return $result;
         } else {
             $this->error = $statement->errorInfo();
+            return false;
         }
-        return $result;
     }
 
-    protected function getResult($statement)
+
+    /**
+     * Возвращает выборку из БД или ошибку.
+     * @param $sql
+     * @param $data
+     * @return array|bool
+     */
+    public function makeSelect($sql, $data = null)
     {
-        if(!is_array($result = $statement->fetchAll())) {
-            $result = $statement;
+        if (!$data) {
+            $statement = $this->pdo->prepare($sql);
+        } else {
+            if ($statement = $this->pdo->prepare($sql)) {
+                $statement = $this->bindParams($statement, $data);
+            } else {
+                $this->error = $this->pdo->errorInfo();
+            }
         }
-        return $result;
+        if ($statement->execute()) {
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $this->error = $statement->errorInfo();
+            return false;
+        }
+
     }
 
-
-    protected function getAnchors($sql)
+    /**
+     * Метод, который присваевает якорям их значения
+     * @param $statement
+     * @param $data [values[0], anchors[1]]
+     * @return mixed $statement
+     */
+    protected function bindParams($statement, $data)
     {
-        preg_match_all("<:[a-z]+_[a-z]+|:[a-z]+>",$sql,$matches);
-        return $matches[0];
+        $values = $data[0];
+        $anchors = $data[1];
+        if (is_array($values) and is_array($anchors)) {
+            foreach ($values as $key => $value) {
+                if (is_numeric($value)) {
+                    $statement->bindValue($anchors[$key],$value,PDO::PARAM_INT);
+                } else {
+                    $statement->bindValue($anchors[$key],$value,PDO::PARAM_STR);
+                }
+            }
+        } else {
+            $statement = false;
+            echo "data or anchors not array";
+        }
+        return $statement;
     }
-
-
 }
