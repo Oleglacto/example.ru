@@ -24,6 +24,11 @@ class UserRepository extends BaseRepository
     }
 
 
+    /**
+     * А вот это как раз должно быть в модели юзера!
+     * В репозитории только запросы. Это похоже на зарос? нет.
+     * Это чето типо бизнес логики, ее часть. Хеширование паролей юзера.
+     */
     protected function setPassword($password)
     {
         return password_hash($password,PASSWORD_DEFAULT);

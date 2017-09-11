@@ -12,6 +12,9 @@ use application\models\User;
 
 Class ControllerLogin extends BaseController{
 
+    /**
+     * ГДЕ ПХПДОКИ, ГДЕ КОММЕНТАРИИ, ЕДРИТЬ КОЛОТИТЬ?!
+     */
 
     public function actionIndex()
     {
@@ -23,6 +26,10 @@ Class ControllerLogin extends BaseController{
     {
         $user = new User();
         if (!isset($_POST['submitted'])) {
+            // вот это можно сделать методом в базовом классе.
+            // сделать протектед свойство с путем к фалй ошибки
+            // чтоб можно было в каждом контроллере переопределять
+            // и сделать вспомогательную функицю
             $error = require_once '../application/views/error_view.php';
         }
         $this->view->render('register_view.php','template_view.php',['error' => $error]);

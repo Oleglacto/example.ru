@@ -20,6 +20,10 @@ class User extends BaseModel
         $this->repository = new UserRepository();
     }
 
+    /**
+     * Это вот вообще чето странное. Зачем оно? Проверять форму?
+     * А зачем оно в модели? Почитай еще раз, про MVC. Что такое модель, что такое контроллер.
+     */
     public function checkInput($input)
     {
         if (!isset($input['submitted'])) {
@@ -29,6 +33,11 @@ class User extends BaseModel
         return true;
     }
 
+    /**
+     * Модель - это информационная модель. В ней не должно быть действий!
+     * Действие, в данном случае регистрация, это область ответственности
+     * контроллеров!
+     */
     public function register($data)
     {
         var_dump($data);
