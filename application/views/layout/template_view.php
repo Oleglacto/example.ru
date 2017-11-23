@@ -7,6 +7,6 @@
       <link href="/styles/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-  <?php include $contentView; ?>
+  <?php require_once __DIR__ . '/../' . $contentView; ?>
   </body>
 </html>
