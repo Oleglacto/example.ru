@@ -17,4 +17,5 @@ require_once 'core/BaseController.php';
 require_once 'core/Route.php';
 
 
-Route::start(); // запускаем маршрутизатор
+$route = new Route();
+$route->start();

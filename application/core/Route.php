@@ -33,60 +33,41 @@ class Route
      * контроллерами и экшенами. Про модели он не должен ничего знать.
      * Контроллер может работать не только с 1 моделью
      */
-    private static $modelName = 'model';
-    private static $controllerName = 'Site';
-    private static $actionName = 'index';
+    protected $controllerName = 'Site';
+    protected $actionName = 'index';
 
 
-    public static function start()
+    public function start()
     {
-
-        /**
-         * А ты проверял, что будет если придут разыне урлы?
-         * ну там если localhost.loc/ напрмиер, т.е. Запрос к корню сайта?
-         * Надо бы затетсить, если не тестил
-         */
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         // получаем имя контроллера
         if (!empty($routes[1])) {
-            self::$controllerName = ucfirst($routes[1]);
+            $this->controllerName = ucfirst($routes[1]);
 
         }
 
         // получаем имя экшена
         if (!empty($routes[2])) {
-            self::$actionName = $routes[2];
+            $this->actionName = $routes[2];
         }
 
         // добавляем префиксы
-        self::setPrefix(self::$controllerName,self::$actionName);
-
-        // подцепляем файл с классом модели (файла модели может и не быть)
-        $modelFile = self::$modelName.'.php';
-        $modelPath = "../application/models/".$modelFile;
-
-        if (file_exists($modelPath)) {
-            require $modelPath;
-        }
+        $this->setPrefix($this->controllerName, $this->actionName);
 
         // подцепляем файл с классом контроллера
-        $controllerPath = '../application/controllers/'.self::$controllerName.'.php';
+        $controllerPath = '../application/controllers/' . $this->controllerName . '.php';
         if (file_exists($controllerPath)) {
-            require $controllerPath;
+            require_once $controllerPath;
         } else {
             //self::ErrorPage404();
         }
 
         // создаем контроллер
-        $controllerName = '\\application\\controllers\\'.self::$controllerName;
+        $controllerName = '\\application\\controllers\\' . $this->controllerName;
         $controller = new $controllerName;
-
-        /**
-         * Найс мув. Сначала запихнули значение в статки свойство, чтобы потом
-         * из статик свойства запихнуть в обычную переменную. Зачем? :)
-         */
-        $action = self::$actionName;
+        $action = $this->actionName;
+        echo($action);
 
         if (method_exists($controller, $action)) {
             // вызываем действие контроллера
@@ -97,16 +78,10 @@ class Route
 
     }
 
-    private function setPrefix($controller, $action = null)
+    protected function setPrefix($controller, $action = null)
     {
-        /**
-         * А зачем тут модель? Роутер должен работать только с
-         * контроллерами и экшенами. Про модели он не должен ничего знать.
-         * Контроллер может работать не только с 1 моделью
-         */
-        self::$modelName = $controller;
-        self::$controllerName = 'Controller'.$controller;
-        self::$actionName = 'action'.$action;
+        $this->controllerName = 'Controller' . $controller;
+        $this->actionName = 'action' . $action;
     }
 
 
