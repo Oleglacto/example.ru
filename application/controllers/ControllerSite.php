@@ -8,17 +8,13 @@
 namespace application\controllers;
 
 use application\core\BaseController;
-use application\repositories;
-
+use application\repositories\CategoryRepository;
 
 class ControllerSite extends BaseController
 {
     function actionIndex()
     {
-        /**
-         * В use подклчюай классы, не очень гуд вот так по неймспейсу юзать. Опять же дублирование будет
-         */
-        $categories = new \application\repositories\CategoryRepository();
+        $categories = new CategoryRepository();
         $data = $categories->getAllRows();
         $this->view->render('site_view.php', 'template_view.php',['categories' => $data]);
     }

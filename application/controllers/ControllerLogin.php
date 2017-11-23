@@ -42,4 +42,33 @@ Class ControllerLogin extends BaseController{
         $this->view->render('register_view.php','template_view.php');
     }
 
+    /**
+     * Это вот вообще чето странное. Зачем оно? Проверять форму?
+     * А зачем оно в модели? Почитай еще раз, про MVC. Что такое модель, что такое контроллер.
+     */
+    public function checkInput($input)
+    {
+        if (!isset($input['submitted'])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Модель - это информационная модель. В ней не должно быть действий!
+     * Действие, в данном случае регистрация, это область ответственности
+     * контроллеров!
+     */
+    public function register($data)
+    {
+        var_dump($data);
+        if (!is_null($data)) {
+            if ($data['password'] === $data['password_check']) {
+                array_pop($data);
+                $this->repository->add($data);
+            }
+        }
+    }
+
 }
