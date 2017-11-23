@@ -27,6 +27,6 @@ class BaseView
             extract($data);
         }
 
-        require_once __DIR__.'/../views/'. $templateView;
+        require_once __DIR__.'/../views/layout/'. $templateView;
     }
 }
