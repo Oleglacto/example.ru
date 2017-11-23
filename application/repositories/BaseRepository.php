@@ -8,13 +8,9 @@
 namespace application\repositories;
 
 use application\dbal\Database;
-abstract class BaseRepository{
 
-
-    /**
-     * ФОРМАТИРОВАНИЕ КОДА ААААААААААААААААААААААААААААААААААААА БОООООООООООООЛЬ
-     */
-
+abstract class BaseRepository
+{
     /**
      * @var Database $connection
      */
@@ -23,15 +19,6 @@ abstract class BaseRepository{
     /**
      * имя таблицы с которым работает репозиторий
      * @var $table
-     *
-     *
-     *
-     * А вот табличку-то лучше из модельки доставть, ты ведь там храгишь свойство table.
-     * Одна модель - один репозиторий. Лучше добавлять сюда модельку, и тянуть из нее всю инфу.
-     * А так у тебя дублирование получается.
-     *
-     * Либо хранитаблицу тут, а не в модели. Как решишь. Обычно ее хранят в модельке, но можно сделать
-     * в рамках этого проекта и по-другому
      */
     protected $table;
 
@@ -41,9 +28,8 @@ abstract class BaseRepository{
     }
 
     /**
-     * Возвращает все торты из бд
+     * Изменение записи в бд
      * @param $data
-     * @return array|bool
      */
     public function edit($id, $data)
     {
@@ -59,6 +45,10 @@ abstract class BaseRepository{
         $this->runQuery($sql,[$dataToExecute['values'], $dataToExecute['anchors']]);
     }
 
+    /**
+     * Добавление записи в таблицу
+     * @param $data
+     */
     public function add($data)
     {
         $dataToExecute = $this->connection->getPreparedData($data);
@@ -68,12 +58,17 @@ abstract class BaseRepository{
         $this->runQuery($sql, [$dataToExecute['values'], $dataToExecute['anchors']]);
     }
 
+    /**
+     * Все записи из таблицы $table
+     * @return array|bool
+     */
     public function getAllRows()
     {
         $sql = "SELECT * FROM $this->table";
         $data = $this->connection->makeSelect($sql);
         return $data;
     }
+
     /**
      * Удаление из таблицы элемента по id
      * @param $id
