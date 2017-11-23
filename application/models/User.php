@@ -21,31 +21,12 @@ class User extends BaseModel
     }
 
     /**
-     * Это вот вообще чето странное. Зачем оно? Проверять форму?
-     * А зачем оно в модели? Почитай еще раз, про MVC. Что такое модель, что такое контроллер.
+     * А вот это как раз должно быть в модели юзера!
+     * В репозитории только запросы. Это похоже на зарос? нет.
+     * Это чето типо бизнес логики, ее часть. Хеширование паролей юзера.
      */
-    public function checkInput($input)
+    protected function setPassword($password)
     {
-        if (!isset($input['submitted'])) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Модель - это информационная модель. В ней не должно быть действий!
-     * Действие, в данном случае регистрация, это область ответственности
-     * контроллеров!
-     */
-    public function register($data)
-    {
-        var_dump($data);
-        if (!is_null($data)) {
-            if ($data['password'] === $data['password_check']) {
-                array_pop($data);
-                $this->repository->add($data);
-            }
-        }
+        return password_hash($password,PASSWORD_DEFAULT);
     }
 }
