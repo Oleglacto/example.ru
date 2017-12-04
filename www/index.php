@@ -6,6 +6,9 @@ ini_set('display_errors', 1);
 function errorHandler($exception){
     $log = new \application\helpers\Log();
     $log->writeLog($exception->getMessage());
+    echo '<pre>';
+    var_dump($exception);
+    echo '</pre>';
 }
 function my_autoload($className)
 {
