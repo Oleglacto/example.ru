@@ -31,7 +31,7 @@ Class ControllerLogin extends BaseController{
         foreach ($_POST as $input) {
             $input = $this->clean($input);
             if($this->checkLength($input, 3,20)) {
-                echo ' very good ';
+                echo ' good ';
             } else {
                 $this->errorMessage = 'Неверный ввод ';
             }
