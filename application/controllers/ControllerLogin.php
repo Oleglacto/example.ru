@@ -12,9 +12,7 @@ use application\models\User;
 
 Class ControllerLogin extends BaseController{
 
-    /**
-     * ГДЕ ПХПДОКИ, ГДЕ КОММЕНТАРИИ, ЕДРИТЬ КОЛОТИТЬ?!
-     */
+    protected $errorMessage = [];
 
     public function actionIndex()
     {
@@ -24,17 +22,20 @@ Class ControllerLogin extends BaseController{
 
     public function actionRegister()
     {
-        $user = new User();
         if (!isset($_POST['submitted'])) {
-            // вот это можно сделать методом в базовом классе.
-            // сделать протектед свойство с путем к фалй ошибки
-            // чтоб можно было в каждом контроллере переопределять
-            // и сделать вспомогательную функицю
-            $error = require_once '../application/views/error_view.php';
+            $this->checkInputs($_POST);
+//            $error = require_once '../application/views/error_view.php';
         }
-        $this->view->render('register_view.php','template_view.php',['error' => $error]);
-        //$user->checkInput($_POST);
-        //
+        $this->view->render('register_view.php','template_view.php');
+        var_dump($_POST);
+        foreach ($_POST as $input) {
+            $input = $this->clean($input);
+            if($this->checkLength($input, 3,20)) {
+                echo 'good ';
+            } else {
+                $this->errorMessage = 'Неверный ввод ';
+            }
+        }
     }
 
     public function actionFormRegister()
@@ -43,13 +44,13 @@ Class ControllerLogin extends BaseController{
     }
 
     /**
-     * Это вот вообще чето странное. Зачем оно? Проверять форму?
-     * А зачем оно в модели? Почитай еще раз, про MVC. Что такое модель, что такое контроллер.
+     * Проверка пользовательского ввода
+     *
      */
-    public function checkInput($input)
+    public function checkInputs($inputs)
     {
         if (!isset($input['submitted'])) {
-            return false;
+
         }
 
         return true;
@@ -63,12 +64,41 @@ Class ControllerLogin extends BaseController{
     public function register($data)
     {
         var_dump($data);
-        if (!is_null($data)) {
-            if ($data['password'] === $data['password_check']) {
-                array_pop($data);
-                $this->repository->add($data);
-            }
-        }
+//        if (!is_null($data)) {
+//            if ($data['password'] === $data['password_check']) {
+//                array_pop($data);
+//                $this->repository->add($data);
+//            }
+//        }
     }
+
+    /**
+     * Функция для проверки длины input'а
+     * @param string $value - input field
+     * @param $min
+     * @param $max
+     * @return bool
+     */
+    protected function checkLength($value = "", $min, $max) {
+        echo $value . " ";
+        $result = (mb_strlen($value) < $min || mb_strlen($value) > $max);
+        echo $result . " ";
+        return !$result;
+    }
+
+    /**
+     * Отчиста данных от html и php тегов
+     * @param string $value
+     * @return string
+     */
+    protected function clean($value = "") {
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = strip_tags($value);
+        $value = htmlspecialchars($value);
+
+        return $value;
+    }
+
 
 }

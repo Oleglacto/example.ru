@@ -30,3 +30,7 @@
 20:28:00 Call to a member function prepare() on null
 20:28:12 Call to a member function prepare() on null
 20:28:26 Call to a member function prepare() on null
+10:52:24 Class '\application\controllers\ControllerFavicon.ico' not found
+10:52:31 Class '\application\controllers\ControllerRegestration' not found
+10:52:44 Class '\application\controllers\ControllerRegistration' not found
+10:52:58 Class '\application\controllers\ControllerRegister' not found

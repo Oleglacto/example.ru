@@ -8,14 +8,11 @@
 namespace application\dbal;
 
 
+use \Exception;
 use PDO;
 
 class Database
 {
-    /**
-     * ФОРМАТИРОВАНИЕ КОДА АААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
-     */
-
     /**
      * ссылка на подключение к БД
      * @var PDO
@@ -34,11 +31,9 @@ class Database
     }
 
     /**
-     * @param $data массив с входными данными   - ЕПТ, укажи ШТОРМУ что это массив. Смари ниже как:
-     * @param $data array    - Да и тип в функции укажи
+     * @param $data array
      * @return array [columns,values,anchors]
      */
-//    public function getPreparedData($data)
     public function getPreparedData(array $data)
     {
         $columns = [];
@@ -47,7 +42,7 @@ class Database
         foreach ($data as $key => $value) {
             $columns[] = $key;
             $values[] = $value;
-            $anchors[] = ":".$key;
+            $anchors[] = ":" . $key;
         }
         return [
             'columns' => $columns,
@@ -62,13 +57,13 @@ class Database
      */
     public function getDB(){
         if (is_null($this->pdo)) {
-            $database = require_once '../application/config/database.php';
-            $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.
-                $database['database'].';charset=utf8;' ,$database['user'],$database['password']);
-
-            /**
-             * А если не получилось подключиться?
-             */
+            try{
+                $database = require_once '../application/config/database.php';
+                $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.
+                    $database['database'].';charset=utf8;' ,$database['user'],$database['password']);
+            } catch (Exception $exception) {
+                echo $exception->getMessage();
+            }
         }
         return $this->pdo;
     }

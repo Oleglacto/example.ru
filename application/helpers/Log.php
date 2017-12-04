@@ -29,11 +29,11 @@ class Log
      */
     protected $time;
 
-    public function __construct($message)
+    public function writeLog($message)
     {
         $this->time = date("H:i:s");
         $this->message = $this->time . " ";
-        $this->message .= $message . '\n';
+        $this->message .= $message . PHP_EOL;
         file_put_contents($this->file, $this->message, FILE_APPEND | LOCK_EX);
     }
 }
