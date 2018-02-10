@@ -21,12 +21,17 @@ class BaseView
      * @param $templateView шаблон
      * @param $data массив с данными передаваемые в шаблон
      */
-    function render($contentView, $templateView, $data = null)
+    function render($contentView, $data = null, $templateView = null)
     {
         if (is_array($data)) {
             extract($data);
         }
 
-        require_once __DIR__.'/../views/layout/'. $templateView;
+        if (!is_null($templateView)) {
+            $this->templateView = $templateView;
+        }
+
+
+        require_once __DIR__.'/../views/layout/' . $this->templateView;
     }
 }
