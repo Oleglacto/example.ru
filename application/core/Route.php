@@ -37,7 +37,7 @@ class Route
         if (file_exists($controllerPath)) {
             require_once $controllerPath;
         } else {
-            //self::ErrorPage404();
+
         }
 
         // создаем контроллер
@@ -49,7 +49,7 @@ class Route
             // вызываем действие контроллера
             $controller->$action();
         } else {
-//            echo(\Exception()::getCode);
+
         }
 
     }
@@ -60,20 +60,4 @@ class Route
         $this->actionName = 'action' . $action;
     }
 
-
-    private function ErrorPage404()
-    {
-
-        /**
-         * При ошибке должны выбрасываться исключения. Особенно в core.
-         * Это ЯДРО. Это не сайт. на ядре может базироваться много твоих сайтов.
-         * Отнсаледуйся от базового класса exception, сделай свое исключение, если нет
-         * нужного из коробки, и брсоай его. В к оде ПРИЛОЖЕНИЯ, а не ядра, можно ловить
-         * исклчение и как надо его обрабатывать
-         */
-        $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
-        header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        header('Location:'.$host.'404');
-    }
 }
