@@ -7,98 +7,87 @@
  */
 namespace application\controllers;
 
+use application\components\AuthorizationGuard;
 use application\core\BaseController;
-use application\models\User;
+use application\components\Validator;
 
 Class ControllerLogin extends BaseController{
 
-    protected $errorMessage = [];
+    protected $guard;
 
     public function actionIndex()
     {
         $this->view->render('login_view.php','template_view.php');
     }
 
+    /**
+     * ControllerLogin constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->guard = AuthorizationGuard::getInstance();
+    }
 
     public function actionRegister()
     {
-        if (!isset($_POST['submitted'])) {
-            $this->checkInputs($_POST);
-//            $error = require_once '../application/views/error_view.php';
+        if (!isset($_POST['registerForm'])) {
+            $this->view->render('register_view.php');
+            throw new InvalidInputDataException();
+            return false;
         }
-        $this->view->render('register_view.php','template_view.php');
-        var_dump($_POST);
-        foreach ($_POST as $input) {
-            $input = $this->clean($input);
-            if($this->checkLength($input, 3,20)) {
-                echo ' bad ';
-            } else {
-                $this->errorMessage = 'Неверный ввод ';
+        $data = $_POST['registerForm'];
+        $rules = [
+            'name' => 'string|required',
+            'phone' => 'string|phone|unique',
+            'email' => 'string|required|email|unique',
+            'password' => 'string|required|password',
+            'password_check' => 'string|required'
+        ];
+
+        // Валидация
+        $validation = new Validator();
+        $formIsValid = $validation->validate($data, $rules);
+        if($formIsValid) {
+            if ($this->guard->registerUser($data)) {
+                $this->view->render('register_view.php', ['success' => 'Регистрация прошла успешно :)']);
+                return true;
+            }
+
+            $this->view->render('register_view.php', ['errors' => 'Что-то пошло не так... Попробуйте позже :)']);
+        } else {
+            $this->view->render('register_view.php', $validation->getErrors());
+        }
+    }
+
+    /**
+     *
+     */
+    public function actionLogin(){
+
+        if (!isset($_POST['loginForm'])) {
+            echo "error";
+        }
+
+//        var_dump($_POST['loginForm']['email']);
+        $validation = new Validator();
+        $rules = [
+            'email' => 'string|required|email',
+            'password' => 'string|required|password'
+        ];
+        $formIsValid = $validation->validate($_POST['loginForm'], $rules);
+        if ($formIsValid) {
+            if ($this->guard->authUser($_POST['loginForm'])) {
+                echo "good";
             }
         }
+
+
     }
 
     public function actionFormRegister()
     {
         $this->view->render('register_view.php','template_view.php');
     }
-
-    /**
-     * Проверка пользовательского ввода
-     *
-     */
-    public function checkInputs($inputs)
-    {
-        if (!isset($input['submitted'])) {
-
-        }
-
-        return true;
-    }
-
-    /**
-     * Модель - это информационная модель. В ней не должно быть действий!
-     * Действие, в данном случае регистрация, это область ответственности
-     * контроллеров!
-     */
-    public function register($data)
-    {
-        var_dump($data);
-//        if (!is_null($data)) {
-//            if ($data['password'] === $data['password_check']) {
-//                array_pop($data);
-//                $this->repository->add($data);
-//            }
-//        }
-    }
-
-    /**
-     * Функция для проверки длины input'а
-     * @param string $value - input field
-     * @param $min
-     * @param $max
-     * @return bool
-     */
-    protected function checkLength($value = "", $min, $max) {
-        echo $value . " ";
-        $result = (mb_strlen($value) < $min || mb_strlen($value) > $max);
-        echo $result . " ";
-        return !$result;
-    }
-
-    /**
-     * Отчиста данных от html и php тегов
-     * @param string $value
-     * @return string
-     */
-    protected function clean($value = "") {
-        $value = trim($value);
-        $value = stripslashes($value);
-        $value = strip_tags($value);
-        $value = htmlspecialchars($value);
-
-        return $value;
-    }
-
 
 }
