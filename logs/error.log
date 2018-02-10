@@ -34,3 +34,310 @@
 10:52:31 Class '\application\controllers\ControllerRegestration' not found
 10:52:44 Class '\application\controllers\ControllerRegistration' not found
 10:52:58 Class '\application\controllers\ControllerRegister' not found
+14:43:49 Class '\application\controllers\ControllerFavicon.ico' not found
+19:26:27 Class '\application\controllers\ControllerFavicon.ico' not found
+20:57:04 Class '\application\controllers\ControllerFavicon.ico' not found
+20:57:08 Class '\application\controllers\ControllerFavicon.ico' not found
+20:57:08 Class '\application\controllers\ControllerFavicon.ico' not found
+21:18:41 Class '\application\controllers\ControllerFavicon.ico' not found
+21:18:43 Class '\application\controllers\ControllerFavicon.ico' not found
+21:18:46 Class '\application\controllers\ControllerFavicon.ico' not found
+21:18:49 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:24 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:27 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:28 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:28 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:34 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:35 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:36 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:36 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:38 Class '\application\controllers\ControllerFavicon.ico' not found
+21:20:39 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:09 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:10 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:10 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:11 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:11 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:22 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:23 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:24 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:25 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:56 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:56 Class '\application\controllers\ControllerFavicon.ico' not found
+21:21:58 Class '\application\controllers\ControllerFavicon.ico' not found
+21:25:36 Class '\application\controllers\ControllerFavicon.ico' not found
+21:48:05 Class 'application\helpers\Validator' not found
+21:48:05 Class '\application\controllers\ControllerFavicon.ico' not found
+21:48:36 Class 'application\helpers\Validator' not found
+21:48:36 Class '\application\controllers\ControllerFavicon.ico' not found
+21:50:12 Class 'application\helpers\Validator' not found
+21:50:12 Class '\application\controllers\ControllerFavicon.ico' not found
+21:50:14 Class 'application\helpers\Validator' not found
+21:50:14 Class '\application\controllers\ControllerFavicon.ico' not found
+21:50:35 Class 'application\helpers\Validator' not found
+21:50:35 Class '\application\controllers\ControllerFavicon.ico' not found
+21:50:36 Class 'application\helpers\Validator' not found
+21:50:36 Class '\application\controllers\ControllerFavicon.ico' not found
+21:51:07 Class '\application\controllers\ControllerFavicon.ico' not found
+22:04:35 Call to undefined method application\helpers\Validator::getErrors()
+22:04:35 Class '\application\controllers\ControllerFavicon.ico' not found
+22:05:28 Class '\application\controllers\ControllerFavicon.ico' not found
+22:05:39 Class '\application\controllers\ControllerFavicon.ico' not found
+22:05:40 Class '\application\controllers\ControllerFavicon.ico' not found
+22:05:41 Class '\application\controllers\ControllerFavicon.ico' not found
+22:05:42 Class '\application\controllers\ControllerFavicon.ico' not found
+22:05:56 syntax error, unexpected 'foreach' (T_FOREACH)
+22:05:56 Class '\application\controllers\ControllerFavicon.ico' not found
+22:06:03 Class '\application\controllers\ControllerFavicon.ico' not found
+22:06:46 Class '\application\controllers\ControllerFavicon.ico' not found
+22:07:13 Class '\application\controllers\ControllerFavicon.ico' not found
+22:08:45 Class '\application\controllers\ControllerFavicon.ico' not found
+22:08:47 Class '\application\controllers\ControllerFavicon.ico' not found
+22:12:22 Class '\application\controllers\ControllerFavicon.ico' not found
+22:12:24 Class '\application\controllers\ControllerFavicon.ico' not found
+22:12:33 Class '\application\controllers\ControllerFavicon.ico' not found
+22:12:50 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:02 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:39 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:40 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:53 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:54 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:54 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:55 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:56 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:56 Class '\application\controllers\ControllerFavicon.ico' not found
+22:13:56 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:20 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:21 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:23 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:23 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:24 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:24 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:27 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:29 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:35 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:37 Class '\application\controllers\ControllerFavicon.ico' not found
+22:14:52 Class '\application\controllers\ControllerFavicon.ico' not found
+22:15:34 Class '\application\controllers\ControllerFavicon.ico' not found
+23:06:18 Class 'application\helpers\InvalidValidatorException' not found
+23:06:18 Class '\application\controllers\ControllerFavicon.ico' not found
+23:06:29 Method name must be a string
+23:06:29 Class '\application\controllers\ControllerFavicon.ico' not found
+23:07:34 Method name must be a string
+23:07:34 Class '\application\controllers\ControllerFavicon.ico' not found
+23:11:14 Method name must be a string
+23:11:14 Class '\application\controllers\ControllerFavicon.ico' not found
+23:11:29 Method name must be a string
+23:11:29 Class '\application\controllers\ControllerFavicon.ico' not found
+23:12:02 Method name must be a string
+23:12:02 Class '\application\controllers\ControllerFavicon.ico' not found
+23:16:40 Method name must be a string
+23:16:40 Class '\application\controllers\ControllerFavicon.ico' not found
+23:17:06 Method name must be a string
+23:17:06 Class '\application\controllers\ControllerFavicon.ico' not found
+23:17:28 Method name must be a string
+23:17:28 Class '\application\controllers\ControllerFavicon.ico' not found
+23:17:45 Method name must be a string
+23:17:45 Class '\application\controllers\ControllerFavicon.ico' not found
+23:18:15 Method name must be a string
+23:18:15 Class '\application\controllers\ControllerFavicon.ico' not found
+23:18:30 Method name must be a string
+23:18:30 Class '\application\controllers\ControllerFavicon.ico' not found
+23:18:40 Method name must be a string
+23:18:40 Class '\application\controllers\ControllerFavicon.ico' not found
+23:19:13 Method name must be a string
+23:19:13 Class '\application\controllers\ControllerFavicon.ico' not found
+23:20:17 Method name must be a string
+23:20:17 Class '\application\controllers\ControllerFavicon.ico' not found
+23:20:43 Class '\application\controllers\ControllerFavicon.ico' not found
+23:32:33 Class '\application\controllers\ControllerFavicon.ico' not found
+23:33:25 Class '\application\controllers\ControllerFavicon.ico' not found
+23:33:26 Class '\application\controllers\ControllerFavicon.ico' not found
+23:33:27 Class '\application\controllers\ControllerFavicon.ico' not found
+23:34:02 Class '\application\controllers\ControllerFavicon.ico' not found
+23:34:18 Class '\application\controllers\ControllerFavicon.ico' not found
+23:34:29 Class '\application\controllers\ControllerFavicon.ico' not found
+23:34:37 Class '\application\controllers\ControllerFavicon.ico' not found
+23:34:45 Class '\application\controllers\ControllerFavicon.ico' not found
+23:35:07 Class '\application\controllers\ControllerFavicon.ico' not found
+23:35:14 Class '\application\controllers\ControllerFavicon.ico' not found
+23:35:40 Class '\application\controllers\ControllerFavicon.ico' not found
+23:36:18 Class '\application\controllers\ControllerFavicon.ico' not found
+23:45:11 Class '\application\controllers\ControllerFavicon.ico' not found
+23:45:46 Class '\application\controllers\ControllerFavicon.ico' not found
+23:45:59 Class '\application\controllers\ControllerFavicon.ico' not found
+23:46:01 Class '\application\controllers\ControllerFavicon.ico' not found
+23:46:17 Class '\application\controllers\ControllerFavicon.ico' not found
+23:46:20 Class '\application\controllers\ControllerFavicon.ico' not found
+23:46:31 Class '\application\controllers\ControllerFavicon.ico' not found
+23:46:58 Class '\application\controllers\ControllerFavicon.ico' not found
+23:47:11 Class '\application\controllers\ControllerFavicon.ico' not found
+23:47:24 Class '\application\controllers\ControllerFavicon.ico' not found
+23:47:27 Class '\application\controllers\ControllerFavicon.ico' not found
+23:47:28 Class '\application\controllers\ControllerFavicon.ico' not found
+23:47:28 Class '\application\controllers\ControllerFavicon.ico' not found
+23:47:40 Class '\application\controllers\ControllerFavicon.ico' not found
+23:48:19 Class '\application\controllers\ControllerFavicon.ico' not found
+23:48:21 Class '\application\controllers\ControllerFavicon.ico' not found
+23:49:25 Class '\application\controllers\ControllerFavicon.ico' not found
+23:49:27 Class '\application\controllers\ControllerFavicon.ico' not found
+23:49:44 syntax error, unexpected 'return' (T_RETURN), expecting ',' or ';'
+23:49:44 Class '\application\controllers\ControllerFavicon.ico' not found
+23:49:50 Class '\application\controllers\ControllerFavicon.ico' not found
+23:49:55 Class '\application\controllers\ControllerFavicon.ico' not found
+23:49:56 Class '\application\controllers\ControllerFavicon.ico' not found
+23:50:28 Class '\application\controllers\ControllerFavicon.ico' not found
+23:50:56 Class '\application\controllers\ControllerFavicon.ico' not found
+23:51:09 Class '\application\controllers\ControllerFavicon.ico' not found
+23:51:12 Class '\application\controllers\ControllerFavicon.ico' not found
+23:51:29 Class '\application\controllers\ControllerFavicon.ico' not found
+23:52:40 Class '\application\controllers\ControllerFavicon.ico' not found
+23:52:41 Class '\application\controllers\ControllerFavicon.ico' not found
+23:53:10 Class '\application\controllers\ControllerFavicon.ico' not found
+23:53:40 Class '\application\controllers\ControllerFavicon.ico' not found
+23:54:50 Class '\application\controllers\ControllerFavicon.ico' not found
+23:55:51 Class '\application\controllers\ControllerFavicon.ico' not found
+23:56:08 Class '\application\controllers\ControllerFavicon.ico' not found
+23:56:33 Class '\application\controllers\ControllerFavicon.ico' not found
+00:05:44 Class '\application\controllers\ControllerFavicon.ico' not found
+00:05:59 Class '\application\controllers\ControllerFavicon.ico' not found
+00:06:26 Class '\application\controllers\ControllerFavicon.ico' not found
+00:06:27 Class '\application\controllers\ControllerFavicon.ico' not found
+00:06:34 Class '\application\controllers\ControllerFavicon.ico' not found
+00:06:52 Class '\application\controllers\ControllerFavicon.ico' not found
+00:06:56 Class '\application\controllers\ControllerFavicon.ico' not found
+00:07:00 Class '\application\controllers\ControllerFavicon.ico' not found
+00:07:01 Class '\application\controllers\ControllerFavicon.ico' not found
+00:07:12 Class '\application\controllers\ControllerFavicon.ico' not found
+00:07:51 Class '\application\controllers\ControllerFavicon.ico' not found
+00:07:54 Class '\application\controllers\ControllerFavicon.ico' not found
+00:08:33 Class '\application\controllers\ControllerFavicon.ico' not found
+00:08:58 Class '\application\controllers\ControllerFavicon.ico' not found
+00:09:16 Class '\application\controllers\ControllerFavicon.ico' not found
+00:09:24 Class '\application\controllers\ControllerFavicon.ico' not found
+00:09:49 Class '\application\controllers\ControllerFavicon.ico' not found
+00:09:51 Class '\application\controllers\ControllerFavicon.ico' not found
+00:10:04 Class '\application\controllers\ControllerFavicon.ico' not found
+00:10:09 Class '\application\controllers\ControllerFavicon.ico' not found
+20:04:11 Class '\application\controllers\ControllerFavicon.ico' not found
+20:04:11 Class '\application\controllers\ControllerFavicon.ico' not found
+22:58:08 Class '\application\controllers\ControllerFavicon.ico' not found
+22:58:08 Class '\application\controllers\ControllerFavicon.ico' not found
+23:15:34 Class '\application\controllers\ControllerFavicon.ico' not found
+11:08:44 Class '\application\controllers\ControllerFavicon.ico' not found
+12:24:50 syntax error, unexpected '}'
+12:31:06 [] operator not supported for strings
+18:28:47 Class '\application\controllers\ControllerFavicon.ico' not found
+12:11:08 Class '\application\controllers\ControllerFavicon.ico' not found
+12:42:59 Class '\application\controllers\ControllerFavicon.ico' not found
+12:43:00 Class '\application\controllers\ControllerFavicon.ico' not found
+12:43:16 Class '\application\controllers\ControllerFavicon.ico' not found
+12:45:14 Class '\application\controllers\ControllerFavicon.ico' not found
+12:45:45 Class '\application\controllers\ControllerFavicon.ico' not found
+12:50:01 Class '\application\controllers\ControllerFavicon.ico' not found
+12:50:04 Class '\application\controllers\ControllerFavicon.ico' not found
+12:50:13 Class '\application\controllers\ControllerFavicon.ico' not found
+12:50:59 Class '\application\controllers\ControllerFavicon.ico' not found
+12:51:08 Class '\application\controllers\ControllerFavicon.ico' not found
+12:51:10 Class '\application\controllers\ControllerFavicon.ico' not found
+12:51:25 Class '\application\controllers\ControllerFavicon.ico' not found
+12:51:53 Class '\application\controllers\ControllerFavicon.ico' not found
+12:52:20 Class '\application\controllers\ControllerFavicon.ico' not found
+12:52:43 Class '\application\controllers\ControllerFavicon.ico' not found
+12:52:48 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:02 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:11 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:15 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:41 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:42 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:55 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:56 Class '\application\controllers\ControllerFavicon.ico' not found
+12:54:57 Class '\application\controllers\ControllerFavicon.ico' not found
+12:55:04 Class '\application\controllers\ControllerFavicon.ico' not found
+12:55:32 Class '\application\controllers\ControllerFavicon.ico' not found
+12:55:35 Class '\application\controllers\ControllerFavicon.ico' not found
+12:55:37 Class '\application\controllers\ControllerFavicon.ico' not found
+12:55:41 Class '\application\controllers\ControllerFavicon.ico' not found
+12:55:44 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:08 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:11 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:26 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:34 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:44 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:53 Class '\application\controllers\ControllerFavicon.ico' not found
+12:57:57 Class '\application\controllers\ControllerFavicon.ico' not found
+12:58:01 Class '\application\controllers\ControllerFavicon.ico' not found
+12:58:08 Class '\application\controllers\ControllerFavicon.ico' not found
+13:00:19 Class '\application\controllers\ControllerFavicon.ico' not found
+13:00:25 Call to a member function prepare() on null
+13:00:25 Class '\application\controllers\ControllerFavicon.ico' not found
+13:00:33 Call to a member function prepare() on null
+13:00:33 Class '\application\controllers\ControllerFavicon.ico' not found
+13:00:55 Call to a member function prepare() on null
+13:00:55 Class '\application\controllers\ControllerFavicon.ico' not found
+13:00:57 Class '\application\controllers\ControllerFavicon.ico' not found
+13:01:03 Call to a member function prepare() on null
+13:01:03 Class '\application\controllers\ControllerFavicon.ico' not found
+13:02:00 Call to a member function prepare() on null
+13:02:00 Class '\application\controllers\ControllerFavicon.ico' not found
+13:02:15 Class '\application\controllers\ControllerFavicon.ico' not found
+13:02:20 Class '\application\controllers\ControllerFavicon.ico' not found
+13:02:26 Class '\application\controllers\ControllerFavicon.ico' not found
+17:57:27 Class '\application\controllers\ControllerFavicon.ico' not found
+17:59:16 syntax error, unexpected ';'
+17:59:19 syntax error, unexpected ';'
+17:59:21 syntax error, unexpected ';'
+18:04:42 Call to undefined method application\models\User::getItem()
+18:04:45 Call to undefined method application\models\User::getItem()
+18:07:09 Argument 1 passed to application\dbal\Database::getPreparedData() must be of the type array, string given, called in /home/oleg/Sites/learn.php/application/repositories/BaseRepository.php on line 38
+18:07:10 Argument 1 passed to application\dbal\Database::getPreparedData() must be of the type array, string given, called in /home/oleg/Sites/learn.php/application/repositories/BaseRepository.php on line 38
+14:04:25 Class '\application\controllers\ControllerFavicon.ico' not found
+12:59:53 Class '\application\controllers\ControllerFavicon.ico' not found
+13:00:29 Argument 1 passed to application\components\Security::encode() must be of the type string, null given, called in /home/oleg/Sites/learn.php/application/models/User.php on line 29
+20:25:10 Class '\application\controllers\ControllerFavicon.ico' not found
+20:25:10 Class '\application\controllers\ControllerFavicon.ico' not found
+16:08:47 Class '\application\controllers\ControllerFavicon.ico' not found
+16:08:47 Class '\application\controllers\ControllerFavicon.ico' not found
+21:28:41 Class '\application\controllers\ControllerFavicon.ico' not found
+21:28:41 Class '\application\controllers\ControllerFavicon.ico' not found
+21:40:00 Class '\application\controllers\ControllerFavicon.ico' not found
+21:40:00 Class '\application\controllers\ControllerFavicon.ico' not found
+22:03:30 Call to undefined method application\repositories\UserRepository::addUser()
+22:04:05 Call to undefined method application\repositories\UserRepository::getErrors()
+22:07:29 Call to undefined method application\repositories\UserRepository::getErrors()
+22:07:30 Call to undefined method application\repositories\UserRepository::getErrors()
+22:07:49 Call to undefined method application\repositories\UserRepository::getErrors()
+22:07:52 Call to undefined method application\repositories\UserRepository::getErrors()
+22:08:46 Call to undefined method application\repositories\UserRepository::getErrors()
+22:08:47 Call to undefined method application\repositories\UserRepository::getErrors()
+22:09:00 Call to undefined method application\repositories\UserRepository::getErrors()
+22:09:01 Call to undefined method application\repositories\UserRepository::getErrors()
+17:14:37 Class '\application\controllers\ControllerFavicon.ico' not found
+17:14:37 Class '\application\controllers\ControllerFavicon.ico' not found
+17:14:37 syntax error, unexpected ')'
+17:15:16 Call to undefined method application\components\AuthorizationGuard::getInstanse()
+17:15:17 Call to undefined method application\components\AuthorizationGuard::getInstanse()
+17:26:07 Call to a member function prepare() on null
+17:27:28 Call to a member function prepare() on null
+17:27:29 Call to a member function prepare() on null
+17:27:30 Call to a member function prepare() on null
+17:27:31 Call to a member function prepare() on null
+17:27:32 Call to a member function prepare() on null
+17:34:42 Class '\application\controllers\ControllerFavicon.ico' not found
+17:34:42 Class '\application\controllers\ControllerFavicon.ico' not found
+12:09:03 Class '\application\controllers\ControllerFavicon.ico' not found
+13:29:21 Undefined class constant 'instance'
+13:34:45 Call to a member function add() on null
+13:35:56 Call to undefined method application\components\AuthorizationGuard::getError()
+20:11:27 Class '\application\controllers\ControllerFavicon.ico' not found
+20:32:06 Argument 1 passed to application\dbal\Database::getPreparedData() must be of the type array, string given, called in /home/oleg/Sites/learn.php/application/repositories/BaseRepository.php on line 38
+20:33:26 [] operator not supported for strings
+20:34:25 Argument 1 passed to application\repositories\BaseRepository::get() must be of the type array, string given, called in /home/oleg/Sites/learn.php/application/components/Validator.php on line 167
+21:14:21 syntax error, unexpected end of file, expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF)
+21:28:41 syntax error, unexpected ':'
+20:12:49 Class '\application\controllers\ControllerFavicon.ico' not found
+20:12:49 Class '\application\controllers\ControllerFavicon.ico' not found
+10:39:58 Class '\application\controllers\ControllerFavicon.ico' not found
+10:39:58 Class '\application\controllers\ControllerFavicon.ico' not found
+10:41:51 Argument 2 passed to application\components\Security::checkPassword() must be of the type string, array given, called in /home/oleg/Sites/learn.php/application/components/AuthorizationGuard.php on line 95
+10:42:04 Argument 2 passed to application\components\Security::checkPassword() must be of the type string, array given, called in /home/oleg/Sites/learn.php/application/components/AuthorizationGuard.php on line 95
