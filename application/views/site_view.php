@@ -8,7 +8,7 @@
             <input type="search" name="search" placeholder="Поиск торта">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
-        <a class="main-header__add-lot button" href="add-lot.html">Добавить торт</a>
+        <a class="main-header__add-lot button" href="/login">Добавить торт</a>
 
         <nav class="user-menu">
             <div class="user-menu__image">
