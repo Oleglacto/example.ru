@@ -10,6 +10,7 @@ function errorHandler($exception){
     var_dump($exception);
     echo '</pre>';
 }
+
 function my_autoload($className)
 {
     $className = str_replace('\\',DIRECTORY_SEPARATOR, $className);
@@ -19,15 +20,12 @@ function my_autoload($className)
     }
 }
 
-
 // автозагрузка классов
 spl_autoload_register('my_autoload');
 //обработчик ошибок
 set_exception_handler('errorHandler');
+
 require_once '../application/bootstrap.php';
-
-
-
 
 
 ?>
