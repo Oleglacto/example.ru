@@ -9,24 +9,81 @@ namespace application\models;
 
 use application\core\BaseModel;
 use application\repositories\UserRepository;
-
+use application\components\Security;
 
 class User extends BaseModel
 {
-    protected $repository;
+    protected $table = 'users';
 
-    public function __construct()
+    protected $id;
+
+    protected $email;
+
+    protected $isAdmin = false;
+
+    protected $age;
+
+
+    public function getByEmail($email)
     {
-        $this->repository = new UserRepository();
+        $repository = new UserRepository();
+        $data = $repository->get(['email' => $email]);
+        if(!empty($data)) {
+            $this->setData($data[0]);
+            return true;
+        }
+
+        return false;
+    }
+
+    protected function setData(array $data)
+    {
+        foreach ($data as $key => $value) {
+            if (property_exists($this,$key)) {
+                $this->$key = $value;
+            }
+        }
     }
 
     /**
-     * А вот это как раз должно быть в модели юзера!
-     * В репозитории только запросы. Это похоже на зарос? нет.
-     * Это чето типо бизнес логики, ее часть. Хеширование паролей юзера.
+     * @return mixed
      */
-    protected function setPassword($password)
+    public function getId()
     {
-        return password_hash($password,PASSWORD_DEFAULT);
+        return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param mixed $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+
 }
