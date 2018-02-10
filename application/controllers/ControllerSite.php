@@ -16,6 +16,6 @@ class ControllerSite extends BaseController
     {
         $categories = new CategoryRepository();
         $data = $categories->getAllRows();
-        $this->view->render('site_view.php', 'template_view.php',['categories' => $data]);
+        $this->view->render('site_view.php', ['categories' => $data]);
     }
 }
