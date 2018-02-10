@@ -9,13 +9,10 @@ namespace application;
 
 use \application\core\Route;
 
-
-
 require_once 'core/BaseModel.php';
 require_once 'core/BaseView.php';
 require_once 'core/BaseController.php';
 require_once 'core/Route.php';
-
 
 $route = new Route();
 $route->start();
