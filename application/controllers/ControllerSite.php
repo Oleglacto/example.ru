@@ -7,6 +7,8 @@
  */
 namespace application\controllers;
 
+use application\App;
+use application\components\AuthorizationGuard;
 use application\core\BaseController;
 use application\repositories\CategoryRepository;
 

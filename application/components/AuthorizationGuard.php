@@ -85,48 +85,49 @@ class AuthorizationGuard
             $this->errors[] = $this->userRepository->getError();
             return false;
         }
-
     }
 
     // авторизация
-    public function authUser(array $data)
+    public function authUser(array $data = null)
     {
-        $user = new User();
-        if (isset($_COOKIE['isAuth'])) {
-            $result = $this->userRepository->get(['cookie' => $_COOKIE['isAuth']]);
-            if (!empty($result)) {
-                $user->getByEmail($result[0]['email']);
-                $this->setCurrentUser($user);
-                return true;
-            }
-            setcookie('isAuth', '', strtotime( '-1 days' ));
-            return false;
-
+        if ($this->isAuthorized()) {
+            return true;
         }
+        $user = new User();
         $passwordHash = $this->userRepository->get(['email' => $data['email']], 'password');
         $success = $this->security->checkPassword($data['password'], $passwordHash[0]['password']);
         if (!$success) {
+            $this->errors['message'] = 'Неверный email или пароль';
             return false;
         }
         $user->getByEmail($data['email']);
         $cookie = $this->security->encode($data['email'] . $passwordHash[0]['password']);
-        setcookie('isAuth', $cookie, strtotime('+30 days'));
+        setcookie('isAuth', $cookie, strtotime('+30 days'), '/');
         $this->userRepository->edit($user->getId(), ['cookie' => $cookie]);
         $this->setCurrentUser($user);
-
-
-        // как-то там ищем бзера, возможно используя репозиторий
-        // используем секьюрити компонет чтобы сравнивать пароли
-        // как итог мы нашли модельку юзера который логинится
-        //$user = someMagic(...);
-
-        // и дальше в коде мы где угодно через этот компонеит
-        // можем изи получать модель залогиненного юзера
-        //$this->setCurrenUser($user);
 
         return true;  //smth|bool|User|че там надо;
       }
 
+    public function isAuthorized()
+    {
+
+        $user = new User();
+
+        if (!isset($_COOKIE['isAuth'])) {
+            return false;
+        }
+
+        $result = $this->userRepository->get(['cookie' => $_COOKIE['isAuth']]);
+        if (!empty($result)) {
+            $user->getByEmail($result[0]['email']);
+            $this->setCurrentUser($user);
+            return true;
+        }
+
+        setcookie('isAuth', '', strtotime( '-1 days' ), '/');
+        return false;
+    }
     /**
      * @return array
      */

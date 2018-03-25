@@ -3,8 +3,11 @@
 </head>
 <div class="container">
     <section id="content">
-        <form action="/login/login" method="post">
+        <form action="/authorization/login" method="post">
             <h1>Войти</h1>
+            <?php if(isset($errors)) {
+                echo $errors;
+            } ?>
             <div>
                 <input type="text" placeholder="Email" id="username" name="loginForm[email]" />
             </div>

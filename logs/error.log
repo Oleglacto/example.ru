@@ -341,3 +341,24 @@
 10:39:58 Class '\application\controllers\ControllerFavicon.ico' not found
 10:41:51 Argument 2 passed to application\components\Security::checkPassword() must be of the type string, array given, called in /home/oleg/Sites/learn.php/application/components/AuthorizationGuard.php on line 95
 10:42:04 Argument 2 passed to application\components\Security::checkPassword() must be of the type string, array given, called in /home/oleg/Sites/learn.php/application/components/AuthorizationGuard.php on line 95
+20:54:24 Class '\application\controllers\ControllerFavicon.ico' not found
+20:54:24 Class '\application\controllers\ControllerFavicon.ico' not found
+19:54:00 Class '\application\controllers\ControllerFavicon.ico' not found
+19:32:15 Class '\application\controllers\ControllerFavicon.ico' not found
+19:32:15 Class '\application\controllers\ControllerFavicon.ico' not found
+20:14:52 syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+20:14:54 syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+20:31:22 syntax error, unexpected ')'
+20:31:24 syntax error, unexpected ')'
+21:23:59 Class '\application\controllers\ControllerFavicon.ico' not found
+21:24:36 syntax error, unexpected ')'
+11:07:19 syntax error, unexpected ')'
+11:07:20 Class '\application\controllers\ControllerFavicon.ico' not found
+11:07:20 Class '\application\controllers\ControllerFavicon.ico' not found
+11:22:00 syntax error, unexpected ')'
+11:22:01 syntax error, unexpected ')'
+21:50:42 Class '\application\controllers\ControllerLogin' not found
+21:50:45 Class '\application\controllers\ControllerLogin' not found
+22:05:31 Argument 1 passed to application\components\Security::checkPassword() must be of the type string, null given, called in /home/oleg/Sites/learn.php/application/components/AuthorizationGuard.php on line 100
+22:05:48 Argument 1 passed to application\components\AuthorizationGuard::authUser() must be of the type array, string given, called in /home/oleg/Sites/learn.php/application/controllers/ControllerAuthorization.php on line 79
+22:58:35 Class '\application\controllers\ControllerAll-lots' not found

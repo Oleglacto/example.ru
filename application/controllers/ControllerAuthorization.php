@@ -7,17 +7,18 @@
  */
 namespace application\controllers;
 
+use application\App;
 use application\components\AuthorizationGuard;
 use application\core\BaseController;
 use application\components\Validator;
 
-Class ControllerLogin extends BaseController{
+Class ControllerAuthorization extends BaseController{
 
     protected $guard;
 
     public function actionIndex()
     {
-        $this->view->render('login_view.php','template_view.php');
+        $this->view->render('authorization_view.php','template_view.php');
     }
 
     /**
@@ -68,8 +69,6 @@ Class ControllerLogin extends BaseController{
         if (!isset($_POST['loginForm'])) {
             echo "error";
         }
-
-//        var_dump($_POST['loginForm']['email']);
         $validation = new Validator();
         $rules = [
             'email' => 'string|required|email',
@@ -78,11 +77,21 @@ Class ControllerLogin extends BaseController{
         $formIsValid = $validation->validate($_POST['loginForm'], $rules);
         if ($formIsValid) {
             if ($this->guard->authUser($_POST['loginForm'])) {
-                echo "good";
+//                header ('Location: /');*/
+                $this->view->render("site_view.php");
+            } else {
+                $errors = $this->guard->getErrors();
+                $this->view->render('authorization_view.php', ['errors' => $errors['message']]);
             }
+        } else {
+            $this->view->render('authorization_view.php', ['errors' => 'Некоректные значения.']);
         }
+    }
 
-
+    public function actionLogout()
+    {
+        setcookie('isAuth', '', strtotime( '-1 days' ), '/');
+        header ('Location: /');
     }
 
     public function actionFormRegister()

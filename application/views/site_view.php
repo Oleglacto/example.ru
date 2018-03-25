@@ -14,10 +14,14 @@
             <div class="user-menu__image">
                 <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
             </div>
-            <div class="user-menu__logged">
-                <p>Константин</p>
-                <a href="#">Выйти</a>
-            </div>
+            <?php if(\application\components\AuthorizationGuard::getInstance()->isAuthorized()): ?>
+                <div class="user-menu__logged">
+                    <p>Константин</p>
+                    <a href="/authorization/logout">Выйти</a>
+                </div>
+            <?php else: ?>
+                <a href="/authorization">Войти</a>
+            <?php endif; ?>
         </nav>
     </div>
 </header>

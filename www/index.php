@@ -1,7 +1,7 @@
 <?php
 
 ini_set('display_errors', 1);
-
+//ini_set('memory_limit', '-1');
 
 function errorHandler($exception){
     $log = new \application\helpers\Log();
@@ -25,8 +25,10 @@ spl_autoload_register('my_autoload');
 //обработчик ошибок
 set_exception_handler('errorHandler');
 
-require_once '../application/bootstrap.php';
+require_once '../application/App.php';
 
+$application = \application\App::getInstance();
+$application->run();
 
 ?>
 
