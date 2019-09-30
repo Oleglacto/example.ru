@@ -3,13 +3,16 @@
 </head>
 <div class="container">
     <section id="content">
-        <form action="">
-            <h1>Login Form</h1>
+        <form action="/authorization/login" method="post">
+            <h1>Войти</h1>
+            <?php if(isset($errors)) {
+                echo $errors;
+            } ?>
             <div>
-                <input type="text" placeholder="Username" required="" id="username" />
+                <input type="text" placeholder="Email" id="username" name="loginForm[email]" />
             </div>
             <div>
-                <input type="password" placeholder="Password" required="" id="password" />
+                <input type="password" placeholder="Пароль" id="password" name="loginForm[password]"/>
             </div>
             <div>
                 <input type="submit" value="Log in" />

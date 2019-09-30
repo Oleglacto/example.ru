@@ -9,34 +9,81 @@ namespace application\models;
 
 use application\core\BaseModel;
 use application\repositories\UserRepository;
-
+use application\components\Security;
 
 class User extends BaseModel
 {
-    protected $repository;
+    protected $table = 'users';
 
-    public function __construct()
-    {
-        $this->repository = new UserRepository();
-    }
+    protected $id;
 
-    public function checkInput($input)
+    protected $email;
+
+    protected $isAdmin = false;
+
+    protected $age;
+
+
+    public function getByEmail($email)
     {
-        if (!isset($input['submitted'])) {
-            return false;
+        $repository = new UserRepository();
+        $data = $repository->get(['email' => $email]);
+        if(!empty($data)) {
+            $this->setData($data[0]);
+            return true;
         }
 
-        return true;
+        return false;
     }
 
-    public function register($data)
+    protected function setData(array $data)
     {
-        var_dump($data);
-        if (!is_null($data)) {
-            if ($data['password'] === $data['password_check']) {
-                array_pop($data);
-                $this->repository->add($data);
+        foreach ($data as $key => $value) {
+            if (property_exists($this,$key)) {
+                $this->$key = $value;
             }
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param mixed $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+
 }

@@ -11,6 +11,9 @@ use application\core\BaseModel;
 
 class Cake extends BaseModel
 {
+    /**
+     * Все эти методы должны обрабатываться контроллером тортиков
+     */
     public function add()
     {
 

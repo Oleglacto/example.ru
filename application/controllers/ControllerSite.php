@@ -7,16 +7,17 @@
  */
 namespace application\controllers;
 
+use application\App;
+use application\components\AuthorizationGuard;
 use application\core\BaseController;
-use application\repositories;
-
+use application\repositories\CategoryRepository;
 
 class ControllerSite extends BaseController
 {
     function actionIndex()
     {
-        $categories = new \application\repositories\CategoryRepository();
+        $categories = new CategoryRepository();
         $data = $categories->getAllRows();
-        $this->view->render('site_view.php', 'template_view.php',['categories' => $data]);
+        $this->view->render('site_view.php', ['categories' => $data]);
     }
 }

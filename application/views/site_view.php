@@ -8,16 +8,20 @@
             <input type="search" name="search" placeholder="Поиск торта">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
-        <a class="main-header__add-lot button" href="add-lot.html">Добавить торт</a>
+        <a class="main-header__add-lot button" href="/login">Добавить торт</a>
 
         <nav class="user-menu">
             <div class="user-menu__image">
                 <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
             </div>
-            <div class="user-menu__logged">
-                <p>Константин</p>
-                <a href="#">Выйти</a>
-            </div>
+            <?php if(\application\components\AuthorizationGuard::getInstance()->isAuthorized()): ?>
+                <div class="user-menu__logged">
+                    <p>Константин</p>
+                    <a href="/authorization/logout">Выйти</a>
+                </div>
+            <?php else: ?>
+                <a href="/authorization">Войти</a>
+            <?php endif; ?>
         </nav>
     </div>
 </header>

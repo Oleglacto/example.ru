@@ -5,16 +5,33 @@
  * Date: 01.08.17
  * Time: 15:20
  */
+
 namespace application\core;
+
 class BaseView
 {
-    protected $templateView = "template_view.php"; // здесь можно указать общий вид по умолчанию.
+    /**
+     * Шаблон используемый по умолчанию
+     * @var $templateView
+     */
+    protected $templateView = "template_view.php";
 
-    function render($contentView, $templateView, $data = null)
+    /**
+     * @param $contentView контент
+     * @param $templateView шаблон
+     * @param $data массив с данными передаваемые в шаблон
+     */
+    function render($contentView, $data = null, $templateView = null)
     {
         if (is_array($data)) {
             extract($data);
         }
-        include __DIR__.'/../views/'.$templateView;
+
+        if (!is_null($templateView)) {
+            $this->templateView = $templateView;
+        }
+
+
+        require_once __DIR__.'/../views/layout/' . $this->templateView;
     }
 }

@@ -16,7 +16,7 @@ class BaseModel
     /**
      * @var $repository экземпляр класса репозитория
      */
-    protected $repository;
+    protected $table;
 
     public function getTable()
     {

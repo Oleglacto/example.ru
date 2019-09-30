@@ -7,9 +7,16 @@
  */
 namespace application\core;
 
+use application\components\Validator;
+
 class BaseController {
 
+    /**
+     * ХДЕ ПХПДОК КОММЕНТАРИИ??!!!!
+     */
+
     protected $view;
+
 
     function __construct()
     {
@@ -18,5 +25,10 @@ class BaseController {
 
     function actionIndex()
     {
+    }
+
+    protected function validate()
+    {
+        $validate = new Validator();
     }
 }

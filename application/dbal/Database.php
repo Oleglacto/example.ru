@@ -8,14 +8,14 @@
 namespace application\dbal;
 
 
+use \Exception;
 use PDO;
 
 class Database
 {
-    /**
-     * ссылка на подключение к БД
-     * @var PDO
-     */
+
+    protected static $instance = null;
+
     protected $pdo;
 
     /**
@@ -24,16 +24,28 @@ class Database
      */
     protected $error;
 
-    public function __construct()
+    private function __construct()
     {
         $this->pdo = $this->getDB();
     }
 
     /**
-     * @param $data массив с входными данными
+     * @return PDO
+     */
+    public static function getInstance()
+    {
+        if(is_null(self::$instance)) {
+            self::$instance = new self;
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * @param $data array
      * @return array [columns,values,anchors]
      */
-    public function getPreparedData($data)
+    public function getPreparedData(array $data)
     {
         $columns = [];
         $values = [];
@@ -41,7 +53,7 @@ class Database
         foreach ($data as $key => $value) {
             $columns[] = $key;
             $values[] = $value;
-            $anchors[] = ":".$key;
+            $anchors[] = ":" . $key;
         }
         return [
             'columns' => $columns,
@@ -56,14 +68,13 @@ class Database
      */
     public function getDB(){
         if (is_null($this->pdo)) {
-            $database = require_once '../application/config/database.php';
-            $this->pdo = new PDO(
-                'mysql:host=' . $database['host'] .
-                ';dbname='.
-                $database['database'] .';charset=utf8;',
-                $database['user'],
-                $database['password']
-            );
+            try{
+                $database = include '../application/config/database.php';
+                $this->pdo = new PDO('mysql:host='.$database['host'].';dbname='.
+                    $database['database'].';charset=utf8;', $database['user'], $database['password']);
+            } catch (Exception $exception) {
+                echo $exception->getMessage();
+            }
         }
         return $this->pdo;
     }
@@ -129,13 +140,12 @@ class Database
             $this->error = $statement->errorInfo();
             return false;
         }
-
     }
 
     /**
      * Метод, который присваевает якорям их значения
-     * @param $statement
-     * @param $data [values[0], anchors[1]]
+     * @param $statement подготовленный sql запрос
+     * @param $data [array values[0], array anchors[1]]
      * @return mixed $statement
      */
     protected function bindParams($statement, $data)
@@ -145,9 +155,9 @@ class Database
         if (is_array($values) and is_array($anchors)) {
             foreach ($values as $key => $value) {
                 if (is_numeric($value)) {
-                    $statement->bindValue($anchors[$key],$value,PDO::PARAM_INT);
+                    $statement->bindValue($anchors[$key], $value, PDO::PARAM_INT);
                 } else {
-                    $statement->bindValue($anchors[$key],$value,PDO::PARAM_STR);
+                    $statement->bindValue($anchors[$key], $value, PDO::PARAM_STR);
                 }
             }
         } else {
